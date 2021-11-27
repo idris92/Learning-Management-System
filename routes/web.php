@@ -27,7 +27,10 @@ Route::get('/instructorR', [pageController::class, 'instructorRegister']);
 Route::get('/adminlogin', [Admincontroller::class, 'instructorLogin']);
 Route::get('/dashboard1', [Admincontroller::class, 'dashboard1']);
 Route::get('/courses1', [Admincontroller::class, 'courses1']);
+Route::get('/add_course', [Admincontroller::class, 'addcourse']);
+Route::get('/add_course1', [Admincontroller::class, 'addcourse1']);
 Route::get('/profile1', [Admincontroller::class, 'studentprofile']);
+Route::get('/profile2', [Admincontroller::class, 'instructorprofile']);
 Route::get('/profile_complete', [Admincontroller::class, 'profile_complete']);
 
 
