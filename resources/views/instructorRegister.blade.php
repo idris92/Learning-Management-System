@@ -21,17 +21,22 @@
         
                 <div class="modal-body">
                     
-                    <form>
+                    <form action="" method="post">
+                        @csrf
                         <div class="form-label-group">
-                          <input type="text" class="form-control form-control-flush" id="cardName" placeholder="Name">
-                          <label for="cardName">Name</label>
+                          <input type="text" name="firstname" class="form-control form-control-flush" id="cardName" placeholder="Firstname">
+                          <label for="cardName">Firstname</label>
                         </div>
                         <div class="form-label-group">
-                          <input type="email" class="form-control form-control-flush" id="cardEmail" placeholder="Email">
+                            <input type="text" name="lastname" class="form-control form-control-flush" id="cardName" placeholder="Lastname">
+                            <label for="cardName">Lastname</label>
+                          </div>
+                        <div class="form-label-group">
+                          <input type="email" name="email" class="form-control form-control-flush" id="cardEmail" placeholder="Email">
                           <label for="cardEmail">Email</label>
                         </div>
                         <div class="form-label-group">
-                          <input type="password" class="form-control form-control-flush" id="cardPassword" placeholder="Password">
+                          <input type="password" name="password" class="form-control form-control-flush" id="cardPassword" placeholder="Password">
                           <label for="cardPassword">Password</label>
                         </div>
                         <div class="mt-6 mb-2">

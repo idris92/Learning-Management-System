@@ -28,6 +28,7 @@ class User extends Authenticatable
         'type_of_user',
         'status',
         'password',
+        'profileimage'
     ];
 
     /**

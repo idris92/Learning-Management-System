@@ -14,7 +14,7 @@ class Course extends Model
         'course_description',
         'What_you_will_learn',
         'requirement',
-        'category_id',
+        'category',
         'user_id',
     ];
 }

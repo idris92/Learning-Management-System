@@ -43,7 +43,7 @@
                             <span class="header-user">
                                 <a href="#"><img src="assets/img/author/02.png" alt="img"></a>
                                 <span>Hello,
-                                    <h5>Ramjan Ali Anik</h5>
+                                    <h5>{{Auth::User()->firstname}} {{Auth::User()->lastname}}</h5>
                                 </span>
                             </span>
                         </div>
@@ -59,7 +59,9 @@
                                     </span>
                                     4.0 (172 Ratings)
                                 </div> --}}
-                                <a class="header-btn btn btn-white" href="/add_course">Create a new course</a>
+                                @if (Auth::User()->status == 'instructor')
+                                    <a class="header-btn btn btn-white" href="/add_course">Create a new course</a>
+                                @endif
                             </div>
                         </div>
                     </div>

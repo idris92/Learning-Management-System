@@ -42,7 +42,7 @@
                             </h4>
                             
                             <h4 class="mb-0"style="padding: 1rem !important">
-                                <a href=""><span><i class="fas fa-sign-out-alt"></i></span> Logout</a>
+                                <a href="/logout"><span><i class="fas fa-sign-out-alt"></i></span> Logout</a>
                             </h4>
                         </div>
 
@@ -50,7 +50,7 @@
                     </div>
 
                 </div>
-               
+               {{-- @include('admin.admincomponents.sidebar') --}}
 
             </div>
 

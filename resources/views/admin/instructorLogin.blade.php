@@ -1,6 +1,6 @@
 @extends('components.header')
 @section('title')
-    Register
+    Login
 @endsection
 @section('content')
 <a class="navbar-brand ms-0 container container-wd"  href="/">
@@ -25,12 +25,13 @@
                 <div class="modal-body">
                     
                     <form action="" method="POST">
+                        @csrf
                         <div class="form-label-group">
-                          <input type="email" class="form-control form-control-flush" id="cardEmail" placeholder="Email">
+                          <input type="email" name="email" class="form-control form-control-flush" id="cardEmail" placeholder="Email">
                           <label for="cardEmail">Email</label>
                         </div>
                         <div class="form-label-group">
-                          <input type="password" class="form-control form-control-flush" id="cardPassword" placeholder="Password">
+                          <input type="password" name="password" class="form-control form-control-flush" id="cardPassword" placeholder="Password">
                           <label for="cardPassword">Password</label>
                         </div>
                         <div class="mt-6 mb-2">

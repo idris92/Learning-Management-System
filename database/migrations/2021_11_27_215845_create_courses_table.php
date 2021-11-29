@@ -20,7 +20,7 @@ class CreateCoursesTable extends Migration
             $table->string('course_description');
             $table->string('What_you_will_learn');
             $table->string('requirement');
-            $table->string('category_id');
+            $table->string('category');
             $table->string('user_id');
             $table->timestamps();
         });
