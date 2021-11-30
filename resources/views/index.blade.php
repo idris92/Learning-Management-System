@@ -50,7 +50,7 @@
                 <div class="col-xl-auto">
                     <!-- Nav -->
                     <div class="nav justify-content-lg-start justify-content-xl-center justify-content-center tab-nav-1" id="pills-tab" role="tablist">
-                        <a class="btn-sm btn-pill me-1 mb-1 text-dark fw-medium px-6 active" id="pills-all-tab" data-bs-toggle="tab" href="/courses" role="tab" aria-controls="pills-all" aria-selected="true">
+                        <a class="btn-sm btn-pill me-1 mb-1 text-dark fw-medium px-6 active" id="pills-all-tab" data-bs-toggle="tab" href="#" role="tab" aria-controls="pills-all" aria-selected="true">
                             All Categories
                         </a>
                         <a class="btn-sm btn-pill me-1 mb-1 text-dark fw-medium px-6" id="pills-art-tab" data-bs-toggle="tab" href="#pills-art" role="tab" aria-controls="pills-art" aria-selected="false">

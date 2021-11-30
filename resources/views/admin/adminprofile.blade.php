@@ -37,43 +37,13 @@
     <section class="admin-dashboard-section">
         <div class="admin-dashboard-right-side">
             <!-- top header start  -->
-            <div class="main-header">
-                <div class="header-wraper">
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <span class="header-user">
-                                <a href="#" ><img style="width: 5rem; height:5rem; border-radius: 100% !important" src="images/{{Auth::User()->profileimage}}" alt="admin image"></a>
-                                <span>Hello,
-                                    <h5>{{Auth::User()->firstname}} {{Auth::User()->lastname}}</h5>
-                                </span>
-                            </span>
-                        </div>
-                        <div class="col-xl-6 align-self-center text-lg-end">
-                            <div class="d-lg-flex align-items-center">
-                                {{-- <div class="user-rating text-center d-inline-block">
-                                    <span class="d-block">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="far fa-star"></i>
-                                    </span>
-                                    4.0 (172 Ratings)
-                                </div> --}}
-                                @if (Auth::User()->status == 'instructor')
-                                    <a class="header-btn btn btn-white" href="/add_course">Create a new course</a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           @include('admin.admincomponents.banner');
             <!-- top header end  -->
 
             <!-- dashboard-area start  -->
             <div class="dashboard-profile-area">
                 <h5 class="dashboard-title">My Profile</h5>
-                <a class="edit-btn" href="/adp_complete"><i class="fa fa-pencil-alt me-2"></i>Edit</a>
+                <a class="edit-btn" href="/adp_complete" style="color:#0071dc"><i class="fa fa-pencil-alt me-2"></i>Edit</a>
                 <ul>
                     <li><span>Registration Date</span>{{Auth::user()->created_at}}</li>
                     <li><span>First Name</span>{{Auth::user()->firstname}}</li>

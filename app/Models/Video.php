@@ -14,5 +14,10 @@ class Video extends Model
         'video_duration',
         'course_id',
         'module',
+       
     ];
+
+    public function course(){
+        return $this->hasMany(Course::class);
+    }
 }

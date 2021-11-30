@@ -32,6 +32,7 @@ Route::match(['get','post'],'/add_course1', [Admincontroller::class, 'addcourse1
 Route::match(['get','post'],'/profile1', [Admincontroller::class, 'profile']);
 Route::match(['get','post'],'/adminprofile', [Admincontroller::class, 'adminprofile'])->name('adminprofile');
 Route::match(['get','post'],'/adp_complete', [Admincontroller::class, 'adminprofilecomplete']);
+Route::match(['get','post'],'/admin_allcourses', [Admincontroller::class, 'admin_allcourses']);
 Route::match(['get','post'],'/all_instructor', [Admincontroller::class, 'all_instructor'])->name('instructors');
 Route::match(['get','post'],'/dashboard2', [Admincontroller::class, 'instructordashboard'])->name('instructordashboard');
 Route::match(['get','post'],'/profile_complete', [Admincontroller::class, 'profile_complete'])->name('profile_complete');

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Learn;
+use App\Models\Module;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Unique;
 
 class Admincontroller extends Controller
 {
@@ -26,8 +28,8 @@ class Admincontroller extends Controller
                     $request->session()->put('status','superadmin');
                     $login_id = User::where('email', $request->email)->get('id');
                     $request->session()->put('id',$login_id);
+                    return redirect()->route('instructordashboard');
 
-                   return redirect()->route('instructordashboard');
             }else if(Auth::attempt(['email'=> $request->email, 'password'=>$request->password, 'status'=>'instructor', 'type_of_user'=>'active'])){
                     $request->session()->put('status','instructor');
                     $login_id = User::where('email', $request->email)->get('id');
@@ -85,7 +87,17 @@ class Admincontroller extends Controller
             return view('admin.adminprofilecomplete');
     }
     function instructordashboard(){
-        return view('admin.profile2');
+        $post = User::with('courses')->get()->where('id',Auth::user()->id);
+        // $video = Course::with('videos')->get()->where('id', 9);
+        // $new_array = [];
+        // foreach($video as $videos){
+        //     foreach($videos->videos as $video1)
+        //     $new_array[] = $video1->module;
+        // }
+        // dd(array_unique($new_array));
+        // $module = Course::with('modules')->get();
+        // dd($video);
+        return view('admin.profile2', compact('post'));
     }
     function addcourse(Request $request){
        if($request->isMethod('post')){
@@ -93,8 +105,14 @@ class Admincontroller extends Controller
                 'course_title'=>'required',
                 'course_subtitle'=>'required',
                 'course_description'=>'required',
+                'course_price'=>'required',
                 'category'=>'required',
+                'videoimage'=>'required',
            ]);
+            $profile_name = $request->file('videoimage')->getClientOriginalName();
+            $file = $request->file('videoimage');
+            $destination = 'images';
+            $file->move($destination,$file->getClientOriginalName());
            $login_id = $request->session()->get('id');
            $id='';
            foreach($login_id as $login){
@@ -103,8 +121,8 @@ class Admincontroller extends Controller
           
            $data = $request->all();
            $data['user_id']= $id;
+           $data['videoimage']=$profile_name;
            $data['category']= $request->category;
-        //    dd($data);
            
            $response = Course::create($data);
            if($response){
@@ -145,8 +163,19 @@ class Admincontroller extends Controller
                 $data['video_duration']= $all_request[$video_duration];
                 $data['module']= $all_request['module'];
                 $data['course_id'] = $id;
+                
+                
                 $response = Video :: create($data);
                 if ($response){
+                    $video = Video::where('course_id',$id)->get('id');
+                    $video_id ='';
+                    foreach ($video as $videos){
+                        $video_id = $videos->id;
+                    }
+                    $module = [];
+                    $module['course_id'] = $id;
+                    $module['video_id'] = $video_id;
+                    Module::create($module);
                     $count++;
                 }
                 
@@ -174,5 +203,16 @@ class Admincontroller extends Controller
         //extracting data from database on the get side
         $data = User::where('status','instructor')->get();
         return view("admin.instructors", compact('data'));
+    }
+
+    function admin_allcourses(Request $request){
+        
+        $post_id = $request->id;
+        $courses = Auth::user()->courses;
+        $course = Course::find($post_id);
+        // $module = Module::where('course_id', $post_id);
+        $videos= Course::with('videos');
+        dd($videos);
+        return view('admin.allcourses', compact('courses', 'course'));
     }
 }

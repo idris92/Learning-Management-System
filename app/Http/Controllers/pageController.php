@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class pageController extends Controller
 {
-    function welcome()
+    function welcome(Request $request)
     {
-       
+        // if($request->action == 'categories'){
+        //     echo "categories";
+        // }
         return view('index');
     }
 
@@ -63,7 +65,8 @@ class pageController extends Controller
                 'password'=>'required',
             ]);
             $instructorreg = $request->all();
-            $instructorreg['status'] = 'superadmin';
+            $instructorreg['status'] = 'instructor';
+            $instructorreg['type_of_user'] = 'active';
             $instructorreg['password']= Hash::make($request->password);
             $response = User::create($instructorreg);
       

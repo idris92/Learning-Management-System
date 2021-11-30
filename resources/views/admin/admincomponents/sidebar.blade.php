@@ -1,7 +1,12 @@
 <div class="dashboard-left-menu">
     <div class="row">
         <span class="header-user col-lg-12" >
-            <a href="#"><img style="width: 5rem; height:5rem; border-radius: 100% !important" src="images/{{Auth::User()->profileimage}}" alt="admin image"></a>
+            @if (Auth::User()->profileimage == null)
+                <a href="#"><img src="assets/img/author/02.png" alt="img"></a>
+            @else
+                <a href="#"><img style="width: 5rem; height:5rem; border-radius: 100% !important" src="images/{{Auth::User()->profileimage}}" alt="admin image"></a>
+            @endif
+            
             {{-- <span class="col-lg-6">Hello,
                 <h5>{{Auth::User()->firstname}} {{Auth::User()->lastname}}</h5>
             </span> --}}
@@ -15,7 +20,7 @@
             <a class="dashboard-item-menu"  href="/adminprofile"><i class="fa fa-user"></i> My Profile</a>
         </li>
         <li class="nav-item" style="padding-right: 1rem !important">
-            <a class="dashboard-item-menu"  href=""><i class="fas fa-graduation-cap"></i>All Courses</a>
+            <a class="dashboard-item-menu"  href="/admin_allcourses"><i class="fas fa-graduation-cap"></i>All Courses</a>
         </li>
         @if (Auth::User()->status == 'superadmin')
          <li class="nav-item" style="padding-right: 1rem !important">
